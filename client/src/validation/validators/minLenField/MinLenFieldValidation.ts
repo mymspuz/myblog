@@ -1,5 +1,5 @@
 import { IFieldValidation } from 'validation/protocols'
-import { InvalidFieldError } from 'validation/errors'
+import { MinLenFieldError } from 'validation/errors'
 
 export class MinLenFieldValidation implements IFieldValidation {
     constructor(
@@ -9,6 +9,6 @@ export class MinLenFieldValidation implements IFieldValidation {
 
     validate(input: object): Error | null {
         // @ts-ignore
-        return input[this.field]?.length <= this.minLength ? new InvalidFieldError() : null
+        return input[this.field]?.length <= this.minLength ? new MinLenFieldError(this.minLength) : null
     }
 }

@@ -1,9 +1,10 @@
 import React from 'react'
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import { ApiContext } from 'presentation/hooks'
 import { getCurrentAccountAdapter, setCurrentAccountAdapter } from 'main/adapters/CurrentAccountAdapter'
-import MakeSignIn from 'main/factories/pages/SignIn'
+import DashboardLayout from 'presentation/layouts/dashboard'
+import { MakeDashboard, MakeBlog } from 'main/factories/pages'
 
 const Router: React.FC = () => {
     return (
@@ -15,7 +16,10 @@ const Router: React.FC = () => {
         >
             <BrowserRouter>
                 <Routes>
-                    <Route path='/' element={ <MakeSignIn /> }/>
+                    <Route path='/' element={ <DashboardLayout /> }>
+                        <Route path='/dashboard/app' element={<MakeDashboard />} />
+                        <Route path='/dashboard/blog' element={<MakeBlog />} />
+                    </Route>
                     {/*<Route path='/signin' element={ <MakeSignIn /> }/>*/}
                     <Route path='/signup' />
                 </Routes>

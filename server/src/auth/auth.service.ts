@@ -1,4 +1,10 @@
-import { BadRequestException, ForbiddenException, Injectable } from '@nestjs/common'
+import {
+    BadRequestException,
+    ForbiddenException,
+    Injectable,
+    NotFoundException,
+    UnauthorizedException
+} from '@nestjs/common'
 import { Prisma, User } from '@prisma/client'
 import * as bcrypt from 'bcrypt'
 import { JwtService } from '@nestjs/jwt'
@@ -29,7 +35,7 @@ export class AuthService {
         }
 
         if (!foundUser) {
-            throw new BadRequestException('Wrong credentials')
+            throw new NotFoundException('Not found user')
         }
 
         const compareSuccess = await this.comparePasswords({
@@ -38,7 +44,7 @@ export class AuthService {
         })
 
         if (!compareSuccess) {
-            throw new BadRequestException('Wrong credentials')
+            throw new UnauthorizedException('Wrong credentials')
         }
 
         const token = await this.signToken({userId: foundUser.id, login: foundUser.login})
