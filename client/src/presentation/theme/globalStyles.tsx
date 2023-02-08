@@ -43,7 +43,7 @@ const GlobalStyles: React.FC = () => {
         ul: {
             margin: 0,
             padding: 0,
-        }
+        },
     }} />)
 }
 

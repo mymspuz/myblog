@@ -1,6 +1,8 @@
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Grid, Button, Container, Stack, Typography } from '@mui/material'
+import { Link as RouterLink } from 'react-router-dom'
+
 import { IValidation } from 'presentation/protocols'
 import { ISignIn } from 'domain/usecases'
 
@@ -72,7 +74,12 @@ const Blog: React.FC<BlogProps> = ({ validation, auth }: BlogProps) => {
                     <Typography variant="h4" gutterBottom>
                         Blog
                     </Typography>
-                    <Button variant="contained" startIcon={<Iconify icon="eva:plus-fill" width={20} />}>
+                    <Button
+                        variant="contained"
+                        startIcon={<Iconify icon="eva:plus-fill" width={20} />}
+                        component={RouterLink}
+                        to={'/dashboard/blog/new'}
+                    >
                         New Post
                     </Button>
                 </Stack>

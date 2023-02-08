@@ -53,9 +53,9 @@ export class AuthService {
             throw new ForbiddenException('Could not signin')
         }
 
-        res.cookie('token', token, {})
+        // res.cookie('token', token, {})
 
-        return res.send(foundUser)
+        return res.send({ accessToken: token })
     }
 
     async createUser(data: Prisma.UserCreateInput): Promise<User> {

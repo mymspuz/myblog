@@ -10,11 +10,11 @@ const root = ReactDOM.createRoot(
 )
 
 root.render(
-  <React.StrictMode>
+  // <React.StrictMode>
       <HelmetProvider>
         <ThemeProvider>
             <Router />
         </ThemeProvider>
       </HelmetProvider>
-  </React.StrictMode>
+  // </React.StrictMode>
 )

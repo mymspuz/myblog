@@ -25,7 +25,7 @@ type NavProps = {
 const Nav: React.FC<NavProps> = ({ openNav, onCloseNav }: NavProps) => {
     const { pathname } = useLocation()
 
-    const isDesktop = useResponsive('up', 'lg', "xl")
+    const isDesktop = useResponsive('up', 'lg', 'xl')
 
     const account = {
         displayName: 'Jaydon Frankie',

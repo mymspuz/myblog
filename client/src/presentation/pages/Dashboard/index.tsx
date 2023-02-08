@@ -9,7 +9,7 @@ type DashboardProps = {
 
 const Dashboard: React.FC<DashboardProps> = ({ validation, auth }: DashboardProps) => {
     return (
-        <h1>DashboardPage</h1>
+        <h1>Dashboard page</h1>
     )
 }
 

@@ -1,6 +1,6 @@
-import {HttpStatusCode, IHttpClient} from 'data/protocols/http'
-import {InvalidCredentialsError, UnexpectedError} from 'domain/errors'
-import {ISignIn, SignIn} from 'domain/usecases'
+import { HttpStatusCode, IHttpClient } from 'data/protocols/http'
+import { InvalidCredentialsError, UnexpectedError } from 'domain/errors'
+import { ISignIn, SignIn } from 'domain/usecases'
 
 export class RemoteSignIn implements ISignIn {
     constructor(
@@ -11,13 +11,12 @@ export class RemoteSignIn implements ISignIn {
     async signIn(
         params: SignIn.Params
     ): Promise<RemoteSignInNamespace.Model> {
-        console.log(params)
         const httpResponse = await this.httpPostClient.request({
             url: this.url,
             method: 'post',
             body: params,
-        });
-        console.log(httpResponse.statusCode)
+        })
+
         switch (httpResponse.statusCode) {
             case HttpStatusCode.ok:
                 return httpResponse.body
